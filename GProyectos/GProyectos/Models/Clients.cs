@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -26,16 +27,11 @@ namespace GProyectos.Models
         public string Direccion { get; set; }
         [Required]
         public string Sector_Laboral { get; set; }
-        [Required]
+        [JsonProperty]
         public DateTime Fecha_Creacion { get; private set; } = DateTime.UtcNow;
 
-        public DateTime Fecha_Actualizacion { get; set; } = DateTime.UtcNow;
-
-        // Puedes agregar un constructor para inicializar la Fecha_Creacion al crear una nueva instancia
-        public Clients()
-        {
-            Fecha_Creacion = DateTime.UtcNow;
-        }
-
+        [JsonProperty]
+        public DateTime Fecha_Actualizacion { get; private set; } = DateTime.UtcNow;
     }
+
 }
